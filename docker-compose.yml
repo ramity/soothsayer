@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  flask:
+    container_name: soothsayer_flask
+    build:
+      context: ./flask
+      dockerfile: Dockerfile
+    volumes:
+      - ./flask:/var/flask
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env
+  mongodb:
+    container_name: soothsayer_mongodb
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
+    ports:
+      - 27017:27017
+    env_file:
+      - ./.env
